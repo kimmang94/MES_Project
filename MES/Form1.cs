@@ -74,9 +74,11 @@ namespace MES
         {
             if (dataGridView1.CurrentRow != null)
             {
-                dataGridView1.CurrentRow.Cells["생산지시번호"].Value = textBox2.Text;
-                dataGridView1.CurrentRow.Cells["품목명"].Value = textBox3.Text;
-                dataGridView1.CurrentRow.Cells["수량"].Value = textBox4.Text;
+                var (orderNo, ItemName, qty) = GetFormData();
+
+                dataGridView1.CurrentRow.Cells["생산지시번호"].Value = orderNo;
+                dataGridView1.CurrentRow.Cells["품목명"].Value = ItemName;
+                dataGridView1.CurrentRow.Cells["수량"].Value = qty;
             }
             else
             {
@@ -92,6 +94,7 @@ namespace MES
                 if (result == DialogResult.Yes)
                 {
                     dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
+                    ClearTextBoxes();
                 }
             }
             else
@@ -102,12 +105,23 @@ namespace MES
 
         private void button5_Click(object sender, EventArgs e)
         {
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-
+            ClearTextBoxes();
             // 포커스 세팅
             textBox2.Focus();
+        }
+
+        // 텍스트 박스 초기화
+        private void ClearTextBoxes()
+        {
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
+        }
+
+        // 텍스트박스에서 현재 데이터 가져오기
+        private (string OrderNo, string ItemName, string Qyt) GetFormData()
+        {
+            return (textBox2.Text.Trim(), textBox3.Text.Trim(), textBox4.Text.Trim());
         }
     }
 }
