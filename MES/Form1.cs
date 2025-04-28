@@ -69,5 +69,19 @@ namespace MES
                 textBox4.Text = row.Cells["수량"].Value.ToString();
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                dataGridView1.CurrentRow.Cells["생산지시번호"].Value = textBox2.Text;
+                dataGridView1.CurrentRow.Cells["품목명"].Value = textBox3.Text;
+                dataGridView1.CurrentRow.Cells["수량"].Value = textBox4.Text;
+            }
+            else
+            {
+                MessageBox.Show("수정할 항목을 먼저 선택해주세요");
+            }
+        }
     }
 }
