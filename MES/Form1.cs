@@ -19,7 +19,7 @@ namespace MES
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("버튼이 클릭되었습니다");
+            label2.Text = textBox1.Text;
         }
     }
 }
