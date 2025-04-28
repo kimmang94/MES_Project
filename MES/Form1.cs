@@ -83,5 +83,31 @@ namespace MES
                 MessageBox.Show("수정할 항목을 먼저 선택해주세요");
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                DialogResult result = MessageBox.Show("정말 삭제하시겠습니까?", "삭제확인", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
+                }
+            }
+            else
+            {
+                MessageBox.Show("삭제할 항목을 먼저 선택해주세요");
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+
+            // 포커스 세팅
+            textBox2.Focus();
+        }
     }
 }
