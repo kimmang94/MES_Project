@@ -57,5 +57,17 @@ namespace MES
             // DataGridView 할당
             dataGridView1.DataSource = dt;
         }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                textBox2.Text = row.Cells["생산지시번호"].Value.ToString();
+                textBox3.Text = row.Cells["품목명"].Value.ToString();
+                textBox4.Text = row.Cells["수량"].Value.ToString();
+            }
+        }
     }
 }
