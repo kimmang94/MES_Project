@@ -7,11 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data;
+using System.Data.SqlClient;
+using System.Collections;
+
 
 namespace MES
 {
+
     public partial class Form1 : Form
     {
+        string connectionString = "Server=localhost;Database=MES_TEST;Trusted_Connection=True;";
+
         public Form1()
         {
             InitializeComponent();
@@ -122,6 +129,22 @@ namespace MES
         private (string OrderNo, string ItemName, string Qyt) GetFormData()
         {
             return (textBox2.Text.Trim(), textBox3.Text.Trim(), textBox4.Text.Trim());
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = "SELECT OrderNo, ItemName, Qty From WorkOrder";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                dataGridView1.DataSource = dt;
+            }
+
         }
     }
 }
