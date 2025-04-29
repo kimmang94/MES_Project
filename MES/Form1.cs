@@ -23,6 +23,16 @@ namespace MES
         {
             InitializeComponent();
 
+
+            try
+            {
+                LoadData();     // 데이터그리드뷰 채우기
+                LoadOrderNos(); // 작업지시 콤보박스 채우기
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"폼 로딩 중 에러 발생: {ex.Message}");
+            }
             comboBox1.Items.Add("대한민국");
             comboBox1.Items.Add("중국");
             comboBox1.Items.Add("일본");
@@ -318,6 +328,71 @@ namespace MES
                     adapter.Fill(dt);
 
                     dataGridView1.DataSource = dt;
+                }
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            string orderNo = comboBox2.SelectedItem?.ToString();
+            string goodQty = textBox6.Text.Trim();
+            string badQty = textBox7.Text.Trim();
+            DateTime workDate = dateTimePicker1.Value;
+
+            if (string.IsNullOrWhiteSpace(orderNo) || string.IsNullOrWhiteSpace(goodQty) || string.IsNullOrWhiteSpace(badQty))
+            {
+                MessageBox.Show("모든 값을 입력해주세요.");
+                return;
+            }
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = "INSERT INTO Result (OrderNo, GoodQty, BadQty, WorkDate) VALUES (OrderNo, GoodQty, BadQty, WorkDate)";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@OrderNo", orderNo);
+                    cmd.Parameters.AddWithValue("@GoodQty", int.Parse(goodQty));
+                    cmd.Parameters.AddWithValue("@BadQty", int.Parse(badQty));
+                    cmd.Parameters.AddWithValue("@WorkDate", workDate);
+
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("실적이 등록되었습니다!");
+                        ClearResultForm();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"에러 발생: {ex.Message}");
+                    }
+                }
+            }
+        }
+
+        private void ClearResultForm()
+        {
+            comboBox2.SelectedIndex = -1;
+            textBox6.Clear();
+            textBox7.Clear();
+            dateTimePicker1.Value = DateTime.Now;
+        }
+
+        private void LoadOrderNos()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = "SELECT OrderNo FROM WorkOrder";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        comboBox2.Items.Add(reader["OrderNo"].ToString());
+                    }
                 }
             }
         }
