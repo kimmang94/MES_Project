@@ -43,6 +43,9 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.button8 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,13 +108,13 @@
             this.dataGridView1.Location = new System.Drawing.Point(156, 211);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(504, 155);
+            this.dataGridView1.Size = new System.Drawing.Size(489, 155);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(156, 386);
+            this.button2.Location = new System.Drawing.Point(156, 432);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(92, 40);
             this.button2.TabIndex = 7;
@@ -121,28 +124,28 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(180, 453);
+            this.textBox2.Location = new System.Drawing.Point(156, 506);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(160, 21);
             this.textBox2.TabIndex = 8;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(179, 480);
+            this.textBox3.Location = new System.Drawing.Point(155, 533);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(160, 21);
             this.textBox3.TabIndex = 9;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(179, 507);
+            this.textBox4.Location = new System.Drawing.Point(155, 560);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(160, 21);
             this.textBox4.TabIndex = 10;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(254, 386);
+            this.button3.Location = new System.Drawing.Point(346, 432);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(86, 40);
             this.button3.TabIndex = 11;
@@ -152,7 +155,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(346, 386);
+            this.button4.Location = new System.Drawing.Point(437, 432);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(101, 40);
             this.button4.TabIndex = 12;
@@ -162,7 +165,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(453, 386);
+            this.button5.Location = new System.Drawing.Point(544, 432);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(101, 40);
             this.button5.TabIndex = 13;
@@ -172,7 +175,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(560, 386);
+            this.button6.Location = new System.Drawing.Point(156, 386);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(101, 40);
             this.button6.TabIndex = 14;
@@ -180,11 +183,41 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(254, 432);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(86, 40);
+            this.button7.TabIndex = 15;
+            this.button7.Text = "등록";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(378, 506);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(160, 21);
+            this.textBox5.TabIndex = 16;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(553, 506);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(92, 40);
+            this.button8.TabIndex = 17;
+            this.button8.Text = "검색";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(936, 722);
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -225,6 +258,9 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Button button8;
     }
 }
 
